@@ -4,13 +4,11 @@ class Balloon {
         this.sprite = scene.physics.add.sprite(x, y, "balloon")
             .setOrigin(0.5, 0.5)
             .setScale(3)
-            .setGravityY(0) // Change gravity value here
+            .setGravityY(150) // Change gravity value here
+            .setVelocity(50, 10) // initial velocity of the balloon (x value exists so that the balloon is not just bouncing in place)
+            .setBounce(1, 1) // bounce exists so that the balloon bounces against the walls and ceiling
             .setInteractive()
             .setCollideWorldBounds(true, 1, 1, true)
-            .on("pointerdown", ()=>{
-                console.log("clicked on balloon!");
-                scene.counter.setText(`Click count: ${++scene.clickCount}`);
-            }); 
     }
 }
 
@@ -41,21 +39,24 @@ class PrototypeScene extends Phaser.Scene {
                 console.log("right test");
             }
         });
-
+        
         //for testing
         this.cursors = this.input.keyboard.createCursorKeys();
-
         
         this.clickCount = 0;
         this.counter = this.add.text(30, 20, `Click count: ${this.clickCount}`);
+
+        this.balloon.sprite.on("pointerdown", ()=>{
+            console.log("clicked on balloon!");
+            this.balloon.sprite.setVelocityY(-200) // simulates bouncing a balloon upwards
+            this.counter.setText(`Click count: ${++this.clickCount}`);
+        }); 
     }
 
     update() {
         // Add to this function as needed
         //Harry:i added arrow key movement for the sake of testng collission
         {
-            this.balloon.sprite.setVelocity(0);
-
             if (this.cursors.left.isDown)
             {
                 this.balloon.sprite.setVelocityX(-300);
@@ -90,7 +91,6 @@ let gameConfig = {
     physics: {
        default: 'arcade', // Change this to Ninja or P2 you find that either is a better fit
        arcade: {
-          
        }
     },
     pixelArt: true,
