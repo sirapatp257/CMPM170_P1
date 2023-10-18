@@ -51,9 +51,9 @@ class PrototypeScene extends Phaser.Scene {
 
     update() {
         // Add to this function as needed
-        // if(this.gameOver) {
-        //     this.scene.restart();
-        // }
+        if(this.gameOver) {
+            this.scene.restart();
+        }
         
     }
 }
