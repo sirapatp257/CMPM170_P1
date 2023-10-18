@@ -27,6 +27,7 @@ class PrototypeScene extends Phaser.Scene {
                 console.log("touched down");
                 this.balloon.sprite.setVelocity(0, 0);
                 this.balloon.sprite.setGravityY(4000);         //fine tune this for how fast the balloon falls off the map
+                this.timedEvent = this.time.delayedCall(3000, this.GameOver, [], this);
                 this.gameOver = true;
                 
             }
@@ -49,11 +50,13 @@ class PrototypeScene extends Phaser.Scene {
         this.clickCount = 0;
         this.counter = this.add.text(30, 20, `Click count: ${this.clickCount}`);
 
+        GameOver() {
+            this.scene.restart();
+        }
+
     }
 
     update() {
-        if (this.gameOver) {
-            this.scene.restart();
-        }
+
     }
 }
