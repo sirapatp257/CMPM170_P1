@@ -1,4 +1,8 @@
 class PrototypeScene extends Phaser.Scene {
+    constructor ()
+    {
+        super("protoScene");
+    }
 
     preload() {
         this.load.image("balloon", "./assets/balloon.png");
