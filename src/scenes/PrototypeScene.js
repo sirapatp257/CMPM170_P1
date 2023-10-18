@@ -25,9 +25,9 @@ class PrototypeScene extends Phaser.Scene {
                 console.log("touched down");
                 this.balloon.sprite.setVelocity(0, 0);
                 this.balloon.sprite.setGravityY(4000);         //fine tune this for how fast the balloon falls off the map
-                this.timedEvent = this.time.delayedCall(3000, () => {
-                    this.scene.restart();
-                });
+                // this.timedEvent = this.time.delayedCall(3000, () => {
+                //     this.scene.restart();
+                // });
             }
 
             if(left){
