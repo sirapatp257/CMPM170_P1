@@ -10,7 +10,7 @@ class PrototypeScene extends Phaser.Scene {
 
         this.balloon.sprite.onWorldBounds = true;
 
-        this.gameOver = false;
+        // this.gameOver = false;
 
         this.physics.world.on('worldbounds', (body, up, down, left, right) => {
             //insert what happens when the balloon touches the edges here
@@ -51,9 +51,9 @@ class PrototypeScene extends Phaser.Scene {
 
     update() {
         // Add to this function as needed
-        if(this.gameOver) {
-            this.scene.restart();
-        }
+        // if(this.gameOver) {
+        //     this.scene.restart();
+        // }
         
     }
 }
