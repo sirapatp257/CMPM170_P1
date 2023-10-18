@@ -8,7 +8,9 @@ class PrototypeScene extends Phaser.Scene {
 
         this.balloon = new Balloon(this, 320, 180);
 
-        this.balloon.sprite.onWorldBounds = true;  
+        this.balloon.sprite.onWorldBounds = true;
+
+        this.gameOver = false;
 
         this.physics.world.on('worldbounds', (body, up, down, left, right) => {
             //insert what happens when the balloon touches the edges here
@@ -22,7 +24,7 @@ class PrototypeScene extends Phaser.Scene {
                 this.balloon.sprite.setVelocity(0, 0);
                 this.balloon.sprite.setGravityY(4000);         //fine tune this for how fast the balloon falls off the map
                 if(this.balloon.sprite.y <= 0){             //this is where the game is supposed to restart
-                    this.scene.restart();
+                    this.gameOver = true;
                 }
                 
             }
@@ -33,7 +35,7 @@ class PrototypeScene extends Phaser.Scene {
                 console.log("right test");
             }
         });
-        
+
         //for testing
         this.balloon.sprite.on("pointerdown", ()=>{
             console.log("clicked on balloon!");
@@ -45,12 +47,13 @@ class PrototypeScene extends Phaser.Scene {
         this.clickCount = 0;
         this.counter = this.add.text(30, 20, `Click count: ${this.clickCount}`);
 
-        
     }
 
     update() {
         // Add to this function as needed
-        
+        if(this.gameOver) {
+            this.scene.restart();
+        }
         
     }
 }
