@@ -27,9 +27,7 @@ class PrototypeScene extends Phaser.Scene {
                 console.log("touched down");
                 this.balloon.sprite.setVelocity(0, 0);
                 this.balloon.sprite.setGravityY(4000);         //fine tune this for how fast the balloon falls off the map
-                if(this.balloon.sprite.y <= 0){             //this is where the game is supposed to restart
-                    this.gameOver = true;
-                }
+                this.gameOver = true;
                 
             }
             if(left){
@@ -54,10 +52,8 @@ class PrototypeScene extends Phaser.Scene {
     }
 
     update() {
-        // Add to this function as needed
-        if(this.gameOver) {
+        if (this.gameOver) {
             this.scene.restart();
         }
-        
     }
 }
