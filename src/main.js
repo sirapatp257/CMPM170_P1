@@ -10,7 +10,7 @@ let gameConfig = {
        arcade: {
        }
     },
-    pixelArt: true,
+    //pixelArt: true,
     backgroundColor: '#79a7c9',
     scene: PrototypeScene,
     title: "CMPM 170 Prototype 1"

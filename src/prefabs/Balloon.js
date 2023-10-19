@@ -29,9 +29,10 @@ class Balloon {
 
         this.sprite = scene.physics.add.sprite(x, y, "balloon")
             .setOrigin(0.5, 0.5)
-            .setScale(3)
-            .setGravityY(150) // Change gravity value here
-            .setVelocity(50, 10) // initial velocity of the balloon (x value exists so that the balloon is not just bouncing in place)
+            .setScale(1)
+            .setGravityY(0) // Change gravity value here
+            .setVelocity(0, 0) // initial velocity of the balloon (x value exists so that the balloon is not just bouncing in place)
+            .setAngularDrag(20)
             .setBounce(1, 1) // bounce exists so that the balloon bounces against the walls and ceiling
             .setInteractive()
             .setCollideWorldBounds(true, 1, 1, true)
